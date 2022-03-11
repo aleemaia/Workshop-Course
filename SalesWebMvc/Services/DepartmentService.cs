@@ -6,21 +6,16 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace SalesWebMvc.Services {
-    public class SellerService {
+    public class DepartmentService {
 
         private readonly SalesWebMvcContext _context;
 
-        public SellerService(SalesWebMvcContext context) {
+        public DepartmentService(SalesWebMvcContext context) {
             _context = context;
         }
 
-        public List<Seller> FindaAll() {
-            return _context.Seller.ToList();
-        }
-
-        public void Insert(Seller obj) {
-            _context.Add(obj);
-            _context.SaveChanges();
+        public List<Department> FindaAll() {
+            return _context.Department.OrderBy(x => x.Name).ToList();
         }
     }
 }
